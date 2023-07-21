@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+  djangoapp:
+    container_name: djangoapp
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./djangoapp:/djangoapp
+      - ./data/web/static:/data/web/static/
+      - ./data/web/media:/data/web/media/
+    env_file:
+      - ./dotenv_files/.env
+    depends_on:
+      - psql
+  psql:
+    container_name: psql
+    image: postgres:14-alpine
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    env_file:
+      - ./dotenv_files/.env
+    # networks:
+    #   - djangoapp-network
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    env_file:
+      - ./dotenv_files/.env
+    ports:
+      - 5051:80
+    # networks:
+    #   - djangoapp-network
+  mailhog:
+    container_name: djangoapp_mailhog
+    image: mailhog/mailhog
+    restart: always
+    logging:
+      driver: 'none'
+    ports:
+      - 1025:1025
+      - 8025:8025
+    # networks:
+    #   - djangoapp-network
+
+volumes:
+  pgdata:
+  pgadmin:
+
+# networks:
+#   djangoapp-network:
+#     driver: bridge

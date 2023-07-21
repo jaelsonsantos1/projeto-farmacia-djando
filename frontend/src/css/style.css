@@ -1,0 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --link-color-grey-base: #4a4a4a;
+    --color-neutral-100: #e5e5e5;
+    --color-neutral-130: #4a4a4a;
+}
+
+/* Estilos para telas com largura menor ou igual a 600px */
+@media screen and (max-width: 600px) {
+    /* Insira aqui os estilos que deseja aplicar em telas menores */
+
+
+/* Estilos para telas com largura entre 601px e 1024px */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Insira aqui os estilos que deseja aplicar em telas de tamanho médio */
+  }
+
+
+/* Estilos para telas com largura maior ou igual a 1025px */
+@media screen and (min-width: 1025px) {
+    /* Insira aqui os estilos que deseja aplicar em telas maiores */
+  }
+}
+  
