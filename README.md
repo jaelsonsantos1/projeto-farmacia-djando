@@ -7,7 +7,7 @@ Este é um projeto relacionado a um desafio Python+Vue para uma vaga de Programa
 Clonar o projeto
 ```
 git clone https://github.com/jaelsonsantos1/projeto-farmacia-djando.git
-cd myproject
+cd projeto-farmacia-djando
 ```
 Criar o container docker e instalar as imagens necessárias
 ```
