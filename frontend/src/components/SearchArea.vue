@@ -22,7 +22,14 @@
         </div>
         <div class="resultsArea">
             <!-- Area onde aparecerá os resultados -->
-            Area para visualizar resultados buscados
+            <div v-for="dado in dados" :key="dado.registro">
+                <!-- Renderize os dados do produto aqui -->
+                <p>{{ dado.produto }} - R$ {{ dado.cnpj }}</p>
+            </div>
+
+            <div v-if="temProximaPagina" v-infinite-scroll="carregarMedicamentos" :infinite-scroll-disabled="ocupado">
+                Cregando mais itens...
+            </div>
         </div>
     </div>
 </template>
@@ -40,6 +47,12 @@ export default {
             categoriesValueList: [],
             categoriesList: []
         }
+    },
+    props: {
+        dados: Array,
+        temProximaPagina: Boolean,
+        ocupado: Boolean,
+        carregarMedicamentos: Function
     }
 }
 </script>
